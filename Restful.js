@@ -16,6 +16,14 @@ function handleApiError(res, err) {
 
 
 // GET: Read all students / Search students
+//curl http://localhost:3000/api/students
+//curl "http://localhost:3000/api/students?name=Mary"
+//curl "http://localhost:3000/api/students?studentNo=S001"
+//curl "http://localhost:3000/api/students?enrolledCourse=COMP3810"
+//curl "http://localhost:3000/api/students?grade=A"
+
+
+
 app.get('/api/students', async (req, res) => {
   try {
     const filter = {};
@@ -44,6 +52,7 @@ app.get('/api/students', async (req, res) => {
 });
 
 // GET: Read one student
+//curl http://localhost:3000/api/students/S001
 app.get('/api/students/:studentNo', async (req, res) => {
   try {
     const student = await Student.findOne({
@@ -63,6 +72,16 @@ app.get('/api/students/:studentNo', async (req, res) => {
 });
 
 // POST: Create student
+//curl -X POST http://localhost:3000/api/students \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Mary Smith",
+  "studentNo": "S001",
+  "phone": "91234567",
+  "enrolledCourse": "COMP3910",
+  "grade": "A"
+}'
+//
 app.post('/api/students', async (req, res) => {
   try {
     const student = await Student.create({
@@ -83,6 +102,15 @@ app.post('/api/students', async (req, res) => {
 });
 
 // PUT: Update student
+//curl -X PUT http://localhost:3000/api/students/S001 \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Mary Updated",
+  "phone": "98765432",
+  "grade": "A"
+}'
+  //
+
 app.put('/api/students/:studentNo', async (req, res) => {
   try {
     const allowedFields = [
@@ -128,6 +156,7 @@ app.put('/api/students/:studentNo', async (req, res) => {
 });
 
 // DELETE: Delete student
+//curl -X DELETE http://localhost:3000/api/students/S001
 app.delete('/api/students/:studentNo', async (req, res) => {
   try {
     const result = await Student.deleteOne({
@@ -153,6 +182,7 @@ app.delete('/api/students/:studentNo', async (req, res) => {
 
 
 // GET: Read all courses
+//curl http://localhost:3000/api/courses
 app.get('/api/courses', async (req, res) => {
   try {
     const courses = await Course.find();
@@ -163,7 +193,15 @@ app.get('/api/courses', async (req, res) => {
 });
 
 // POST: Create course
-app.post('/api/courses', async (req, res) => {
+//curl -X POST http://localhost:3000/api/courses \
+-H "Content-Type: application/json" \
+-d '{
+  "courseCode": "COMP3810",
+  "title": "Server-side Technologies",
+  "instructor": "Dr. LIU"
+}'
+//  
+  app.post('/api/courses', async (req, res) => {
   try {
     const course = await Course.create({
       courseCode: req.body.courseCode,
@@ -181,6 +219,7 @@ app.post('/api/courses', async (req, res) => {
 });
 
 // DELETE: Delete course
+//curl -X DELETE http://localhost:3000/api/courses/COMP3120
 app.delete('/api/courses/:courseCode', async (req, res) => {
   try {
     const result = await Course.deleteOne({
