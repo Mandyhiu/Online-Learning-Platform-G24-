@@ -34,7 +34,16 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    <% if (student && students.length >0) {%>
+                        <% student.forEach(function(student) {%>
+                            <tr>
+                                <td><%=student.name%></td>
+                                <td><%=student.studNo%></td>
+                                <td><%=student.course%></td>
+                                <td><%=student.grade%></td>
+                            </tr>
+                        <%});%>
+                    <%}
                 </tbody>
             
         </div>
