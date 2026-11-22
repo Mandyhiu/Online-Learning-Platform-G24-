@@ -78,7 +78,7 @@ app.get('/api/students/:studentNo', async (req, res) => {
   //"name": "Mary Smith",
  // "studentNo": "S001",
  // "phone": "91234567",
-  //"enrolledCourse": "COMP3910",
+  //"enrolledCourse": "COMP3810",
  // "grade": "A"
 //}'
 
