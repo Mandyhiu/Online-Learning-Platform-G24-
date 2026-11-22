@@ -1,35 +1,22 @@
-const express = require('express');
-const router = express.Router();
 
-const Student = require('../models/Student');
-const Course = require('../models/Course');
+const Student = require('./models/Student');
+const Course = require('./models/Course');
 
 // Handle API errors
 function handleApiError(res, err) {
-  if (err.code === 11000) {
-    return res.status(409).json({
-      error: 'Duplicate record'
-    });
-  }
-
-  if (err.name === 'ValidationError') {
-    return res.status(400).json({
-      error: err.message
-    });
-  }
-
   console.error(err);
 
-  return res.status(500).json({
+  res.status(500).json({
     error: 'Server error'
   });
 }
 
-// -----------------------STUDENT API---------------
+
+// ----------------------------STUDENT API-----------------------------
 
 
 // GET: Read all students / Search students
-router.get('/students', async (req, res) => {
+app.get('/api/students', async (req, res) => {
   try {
     const filter = {};
 
@@ -57,7 +44,7 @@ router.get('/students', async (req, res) => {
 });
 
 // GET: Read one student
-router.get('/students/:studentNo', async (req, res) => {
+app.get('/api/students/:studentNo', async (req, res) => {
   try {
     const student = await Student.findOne({
       studentNo: req.params.studentNo
@@ -76,7 +63,7 @@ router.get('/students/:studentNo', async (req, res) => {
 });
 
 // POST: Create student
-router.post('/students', async (req, res) => {
+app.post('/api/students', async (req, res) => {
   try {
     const student = await Student.create({
       name: req.body.name,
@@ -96,7 +83,7 @@ router.post('/students', async (req, res) => {
 });
 
 // PUT: Update student
-router.put('/students/:studentNo', async (req, res) => {
+app.put('/api/students/:studentNo', async (req, res) => {
   try {
     const allowedFields = [
       'name',
@@ -127,7 +114,7 @@ router.put('/students/:studentNo', async (req, res) => {
 
     if (!student) {
       return res.status(404).json({
-        error: 'Student not found !'
+        error: 'Student not found'
       });
     }
 
@@ -141,7 +128,7 @@ router.put('/students/:studentNo', async (req, res) => {
 });
 
 // DELETE: Delete student
-router.delete('/students/:studentNo', async (req, res) => {
+app.delete('/api/students/:studentNo', async (req, res) => {
   try {
     const result = await Student.deleteOne({
       studentNo: req.params.studentNo
@@ -162,11 +149,11 @@ router.delete('/students/:studentNo', async (req, res) => {
 });
 
 
-// -----------------------COURSE API-----------------------------
+// -----------------------------COURSE API---------------------------
 
 
 // GET: Read all courses
-router.get('/courses', async (req, res) => {
+app.get('/api/courses', async (req, res) => {
   try {
     const courses = await Course.find();
     res.json(courses);
@@ -176,7 +163,7 @@ router.get('/courses', async (req, res) => {
 });
 
 // POST: Create course
-router.post('/courses', async (req, res) => {
+app.post('/api/courses', async (req, res) => {
   try {
     const course = await Course.create({
       courseCode: req.body.courseCode,
@@ -191,10 +178,10 @@ router.post('/courses', async (req, res) => {
   } catch (err) {
     handleApiError(res, err);
   }
-)};  
+});
 
 // DELETE: Delete course
-router.delete('/courses/:courseCode', async (req, res) => {
+app.delete('/api/courses/:courseCode', async (req, res) => {
   try {
     const result = await Course.deleteOne({
       courseCode: req.params.courseCode
@@ -214,4 +201,3 @@ router.delete('/courses/:courseCode', async (req, res) => {
   }
 });
 
-module.exports=router;
