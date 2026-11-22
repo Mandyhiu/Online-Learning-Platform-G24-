@@ -21,13 +21,12 @@ function handleApiError(res, err) {
   console.error(err);
 
   return res.status(500).json({
-    error: 'Internal server error'
+    error: 'Server error'
   });
 }
 
-// ========================================
-// STUDENT API
-// ========================================
+// -----------------------STUDENT API---------------
+
 
 // GET: Read all students / Search students
 router.get('/students', async (req, res) => {
@@ -128,7 +127,7 @@ router.put('/students/:studentNo', async (req, res) => {
 
     if (!student) {
       return res.status(404).json({
-        error: 'Student not found'
+        error: 'Student not found !'
       });
     }
 
@@ -162,9 +161,9 @@ router.delete('/students/:studentNo', async (req, res) => {
   }
 });
 
-// ========================================
-// COURSE API
-// ========================================
+
+// -----------------------COURSE API-----------------------------
+
 
 // GET: Read all courses
 router.get('/courses', async (req, res) => {
@@ -215,4 +214,4 @@ router.delete('/courses/:courseCode', async (req, res) => {
   }
 });
 
-moduel.exports=router;
+module.exports=router;
