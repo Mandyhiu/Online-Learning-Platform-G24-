@@ -73,15 +73,15 @@ app.get('/api/students/:studentNo', async (req, res) => {
 
 // POST: Create student
 //curl -X POST http://localhost:3000/api/students \
--H "Content-Type: application/json" \
--d '{
-  "name": "Mary Smith",
-  "studentNo": "S001",
-  "phone": "91234567",
-  "enrolledCourse": "COMP3910",
-  "grade": "A"
-}'
-//
+//-H "Content-Type: application/json" \
+//-d '{
+  //"name": "Mary Smith",
+ // "studentNo": "S001",
+ // "phone": "91234567",
+  //"enrolledCourse": "COMP3910",
+ // "grade": "A"
+//}'
+
 app.post('/api/students', async (req, res) => {
   try {
     const student = await Student.create({
@@ -103,13 +103,13 @@ app.post('/api/students', async (req, res) => {
 
 // PUT: Update student
 //curl -X PUT http://localhost:3000/api/students/S001 \
--H "Content-Type: application/json" \
--d '{
-  "name": "Mary Updated",
-  "phone": "98765432",
-  "grade": "A"
-}'
-  //
+//-H "Content-Type: application/json" \
+//-d '{
+ // "name": "Mary Updated",
+  //"phone": "98765432",
+  //"grade": "A"
+//}'
+  
 
 app.put('/api/students/:studentNo', async (req, res) => {
   try {
@@ -194,13 +194,13 @@ app.get('/api/courses', async (req, res) => {
 
 // POST: Create course
 //curl -X POST http://localhost:3000/api/courses \
--H "Content-Type: application/json" \
--d '{
-  "courseCode": "COMP3810",
-  "title": "Server-side Technologies",
-  "instructor": "Dr. LIU"
-}'
-//  
+//-H "Content-Type: application/json" \
+//-d '{
+  //"courseCode": "COMP3810",
+ // "title": "Server-side Technologies",
+ // "instructor": "Dr. LIU"
+//}'
+  
   app.post('/api/courses', async (req, res) => {
   try {
     const course = await Course.create({
