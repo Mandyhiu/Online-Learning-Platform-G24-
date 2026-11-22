@@ -219,7 +219,7 @@ app.get('/api/courses', async (req, res) => {
 });
 
 // DELETE: Delete course
-//curl -X DELETE http://localhost:3000/api/courses/COMP3120
+//curl -X DELETE http://localhost:3000/api/courses/COMP3810
 app.delete('/api/courses/:courseCode', async (req, res) => {
   try {
     const result = await Course.deleteOne({
