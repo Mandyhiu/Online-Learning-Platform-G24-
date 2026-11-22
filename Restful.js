@@ -191,5 +191,28 @@ router.post('/courses', async (req, res) => {
     });
   } catch (err) {
     handleApiError(res, err);
+  }
+)};  
 
+// DELETE: Delete course
+router.delete('/courses/:courseCode', async (req, res) => {
+  try {
+    const result = await Course.deleteOne({
+      courseCode: req.params.courseCode
+    });
 
+    if (!result.deletedCount) {
+      return res.status(404).json({
+        error: 'Course not found'
+      });
+    }
+
+    res.json({
+      message: 'Course deleted'
+    });
+  } catch (err) {
+    handleApiError(res, err);
+  }
+});
+
+moduel.exports=router;
