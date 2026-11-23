@@ -19,8 +19,8 @@ function handleApiError(res, err) {
 //curl http://localhost:3000/api/students
 //curl "http://localhost:3000/api/students?name=Mary"
 //curl "http://localhost:3000/api/students?studentNo=S001"
-//curl "http://localhost:3000/api/students?enrolledCourse=COMP3810"
-//curl "http://localhost:3000/api/students?grade=A"
+//curl "http://localhost:3000/api/students?enrolledCourse=2620"
+//curl "http://localhost:3000/api/students?grade=80"
 
 
 
@@ -78,7 +78,7 @@ app.get('/api/students/:studentNo', async (req, res) => {
   //"name": "Mary Chan",
  // "studentNo": "S001",
  // "phone": "88888888",
-  //"enrolledCourse": "COMP3810",
+  //"enrolledCourse": "2620",
  // "grade": "80"
 //}'
 
@@ -196,7 +196,7 @@ app.get('/api/courses', async (req, res) => {
 //curl -X POST http://localhost:3000/api/courses \
 //-H "Content-Type: application/json" \
 //-d '{
-  //"courseCode": "COMP3810",
+  //"courseCode": "2660",
  // "title": "Server-side Technologies",
  // "instructor": "Dr. LIU"
 //}'
@@ -219,7 +219,7 @@ app.get('/api/courses', async (req, res) => {
 });
 
 // DELETE: Delete course
-//curl -X DELETE http://localhost:3000/api/courses/COMP3810
+//curl -X DELETE http://localhost:3000/api/courses/2660
 app.delete('/api/courses/:courseCode', async (req, res) => {
   try {
     const result = await Course.deleteOne({
