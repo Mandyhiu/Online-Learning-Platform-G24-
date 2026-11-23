@@ -75,9 +75,9 @@ app.get('/api/students/:studentNo', async (req, res) => {
 //curl -X POST http://localhost:3000/api/students \
 //-H "Content-Type: application/json" \
 //-d '{
-  //"name": "Mary Smith",
+  //"name": "Mary Chan",
  // "studentNo": "S001",
- // "phone": "91234567",
+ // "phone": "98234567",
   //"enrolledCourse": "COMP3810",
  // "grade": "80"
 //}'
