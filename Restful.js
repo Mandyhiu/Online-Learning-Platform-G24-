@@ -75,7 +75,7 @@ app.get('/api/students/:studentNo', async (req, res) => {
 //curl -X POST http://localhost:3000/api/students \
 //-H "Content-Type: application/json" \
 //-d '{
-  //"name": "Mary Chan",
+  //"name": "Mary ",
  // "studentNo": "S001",
  // "phone": "88888888",
   //"enrolledCourse": "2620",
@@ -196,7 +196,7 @@ app.get('/api/courses', async (req, res) => {
 //curl -X POST http://localhost:3000/api/courses \
 //-H "Content-Type: application/json" \
 //-d '{
-  //"courseCode": "2660",
+  //"courseCode": "2620",
  // "title": "Server-side Technologies",
  // "instructor": "Dr. LIU"
 //}'
@@ -219,7 +219,7 @@ app.get('/api/courses', async (req, res) => {
 });
 
 // DELETE: Delete course
-//curl -X DELETE http://localhost:3000/api/courses/2660
+//curl -X DELETE http://localhost:3000/api/courses/2620
 app.delete('/api/courses/:courseCode', async (req, res) => {
   try {
     const result = await Course.deleteOne({
