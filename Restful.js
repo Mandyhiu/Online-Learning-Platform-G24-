@@ -89,7 +89,7 @@ app.post('/api/students', async (req, res) => {
       studentNo: req.body.studentNo,
       phone: req.body.phone,
       enrolledCourse: req.body.enrolledCourse,
-      grade: req.body.grade || 'Pending'
+      grade: req.body.grade 
     });
 
     res.status(201).json({
