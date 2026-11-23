@@ -77,7 +77,7 @@ app.get('/api/students/:studentNo', async (req, res) => {
 //-d '{
   //"name": "Mary Chan",
  // "studentNo": "S001",
- // "phone": "98234567",
+ // "phone": "88888888",
   //"enrolledCourse": "COMP3810",
  // "grade": "80"
 //}'
@@ -106,7 +106,7 @@ app.post('/api/students', async (req, res) => {
 //-H "Content-Type: application/json" \
 //-d '{
  // "name": "Mary Updated",
-  //"phone": "98765432",
+  //"phone": "88888888",
   //"grade": "80"
 //}'
   
